@@ -205,8 +205,9 @@
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
         <div class="md:col-span-4">
-          <a href="#" class="text-2xl font-bold text-white hover:text-primary-100 transition-colors mb-8 inline-block">
-            <img src="Logo_planter_RE1.png" alt="PLANTER" class="h-8 w-auto">
+          <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" 
+            class="text-2xl font-bold text-white hover:text-primary-100 transition-colors mb-8 inline-block">
+             <img src="Logo_planter_RE1.png" alt="PLANTER" class="h-8 w-auto">
           </a>
           <p class="text-gray-400 mb-8 text-lg">
             기술 공급자와 수요자를 연결하는<br />
@@ -404,3 +405,23 @@
     </script>
   </body>
 </html> 
+
+<!-- 모달스크립트 -->
+  <script>
+    function openTermsModal() {
+      document.getElementById('terms-modal').classList.remove('hidden');
+    }
+  
+    function closeTermsModal() {
+      document.getElementById('terms-modal').classList.add('hidden');
+    }
+  
+    function openPrivacyModal() {
+      document.getElementById('privacy-modal').classList.remove('hidden');
+    }
+  
+    function closePrivacyModal() {
+      document.getElementById('privacy-modal').classList.add('hidden');
+    }
+  </script>
+  
