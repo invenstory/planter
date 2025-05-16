@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>기술중개 플랫폼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#F0F5FF',
+                100: '#E5EDFF',
+                200: '#BFDBFE',
+                300: '#93C5FD',
+                400: '#60A5FA',
+                500: '#2563EB',
+                600: '#1E40AF',
+                700: '#1E3A8A',
+                800: '#1E3A8A',
+                900: '#1E3A8A',
+              },
+              gray: {
+                50: '#F9FAFB',
+                100: '#F3F4F6',
+                200: '#E5E7EB',
+                300: '#D1D5DB',
+                400: '#9CA3AF',
+                500: '#6B7280',
+                600: '#4B5563',
+                700: '#374151',
+                800: '#1F2937',
+                900: '#111827',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+            },
+            fontSize: {
+              'display-2xl': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+              'display-xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+              'display-lg': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+              'display-md': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+              'display-sm': ['1.875rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+            },
+            boxShadow: {
+              'soft-sm': '0 2px 8px -2px rgba(30, 58, 138, 0.05), 0 4px 16px -4px rgba(30, 58, 138, 0.05)',
+              'soft': '0 2px 15px -3px rgba(30, 58, 138, 0.08), 0 10px 20px -2px rgba(30, 58, 138, 0.04)',
+              'soft-lg': '0 4px 24px -4px rgba(30, 58, 138, 0.08), 0 16px 32px -4px rgba(30, 58, 138, 0.04)',
+            },
+            spacing: {
+              '18': '4.5rem',
+              '22': '5.5rem',
+              '30': '7.5rem',
+              '34': '8.5rem',
+            },
+            borderRadius: {
+              'soft-sm': '0.375rem',
+              'soft': '0.5rem',
+              'soft-lg': '0.75rem',
+              'soft-xl': '1rem',
+              'soft-2xl': '1.5rem',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Base Styles */
+      :root {
+        --scrollbar-width: 0px;
+      }
+      
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      
+      @media (min-width: 768px) {
+        html {
+          font-size: 16.5px;
+        }
+      }
+      
+      @media (min-width: 1024px) {
+        html {
+          font-size: 17px;
+        }
+      }
+      
+      body {
+        font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        color: #111827;
+        background-color: #FFFFFF;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hover Effects */
+      .hover-lift {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-4px);
+      }
+
+      .hover-grow {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .hover-grow:hover {
+        transform: scale(1.02);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #F0F5FF;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #60A5FA;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #2563EB;
+      }
+
+      /* Section Spacing */
+      .section-padding {
+        padding-top: clamp(3rem, 8vw, 6rem);
+        padding-bottom: clamp(3rem, 8vw, 6rem);
+      }
+
+      /* Container */
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: clamp(1rem, 5vw, 2rem);
+        padding-right: clamp(1rem, 5vw, 2rem);
+      }
+
+      /* Typography Scale */
+      .text-display-2xl { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+      .text-display-xl { font-size: clamp(2.25rem, 4vw, 3.75rem); }
+      .text-display-lg { font-size: clamp(2rem, 3vw, 3rem); }
+      .text-display-md { font-size: clamp(1.75rem, 2.5vw, 2.25rem); }
+      .text-display-sm { font-size: clamp(1.5rem, 2vw, 1.875rem); }
+
+      /* Button Styles */
+      .btn {
+        min-height: 44px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: #60A5FA;
+        color: #FFFFFF;
+      }
+
+      .btn-primary:hover {
+        background-color: #2563EB;
+      }
+
+      .btn-outline {
+        border: 2px solid #60A5FA;
+        color: #60A5FA;
+      }
+
+      .btn-outline:hover {
+        background-color: #F0F5FF;
+      }
+
+      /* Card Styles */
+      .card {
+        background: #FFFFFF;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.1), 0 2px 4px -1px rgba(30, 58, 138, 0.06);
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.1), 0 4px 6px -2px rgba(30, 58, 138, 0.05);
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- 헤더 및 네비게이션 -->
+    <header class="fixed top-0 left-0 right-0 z-50 shadow-soft" style="background-color: #2C3C7C;">
+      <div class="container h-20 flex items-center justify-between">
+        <div class="flex items-center">
+          <a href="#" class="text-2xl font-bold text-white hover:text-primary-100 transition-colors">
+            <img src="Logo_planter_RE1.png" alt="PLANTER" class="h-8 w-auto">
+          </a>
+        </div>
+        <nav class="flex items-center space-x-2">
+          <a
+            href="#"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >홈</a
+          >
+          <a
+            href="#tech-request"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >기술 요청</a
+          >
+          <a
+            href="#tech-proposal"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >기술 제안</a
+          >
+          <a
+            href="#funding-offset"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >자금 조달</a
+          >
+          <a
+            href="notice.html"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >공지사항</a
+          >
+        </nav>
+      </div>
+    </header>
+    <!-- 히어로 섹션 -->
+    <section class="relative min-h-screen overflow-hidden">
+      <div class="absolute inset-0">
+        <img
+          src="background_1st.jpg"
+          alt="Business statistics and charts"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="relative container z-10 flex items-center min-h-screen py-20">
+        <div class="max-w-2xl">
+          <span class="inline-block text-primary-600 font-semibold mb-6">Grow with Us</span>
+          <h1 class="text-display-xl font-bold text-gray-900 leading-tight mb-10">
+            기업의 성장을 돕는<br />
+            <span class="text-primary-600">기술 거래 지원 플랫폼</span>
+            </h1>
+          <p class="text-xl text-gray-700 leading-relaxed">
+            합리적인 비용으로 특허를 확보하고,<br class="hidden sm:block" />
+            필요 시 자금 조달까지 원스톱으로<br class="hidden sm:block" />
+            지원받을 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- 회사 소개 섹션 -->
+    <section class="relative min-h-screen overflow-hidden">
+      <div class="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
+          alt="Technology innovation"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gray-900/80"></div>
+      </div>
+      <div class="relative container flex items-center py-10 lg:py-16">
+        <div class="max-w-4xl mx-auto text-white mt-32">
+          <h2 class="text-4xl font-bold mb-16">기술과 혁신의 연결고리</h2>
+            <div class="space-y-12">
+            <div class="flex items-start space-x-6">
+              <div class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-soft-lg flex-shrink-0">
+                <i class="ri-check-line text-white text-2xl"></i>
+                  </div>
+              <p class="text-lg leading-relaxed text-white/90">
+                정부지원사업, 입찰, 벤처 인증,<br />
+                투자유치 등에서 필요한 지식재산권을<br />
+                빠르게 확보할 수 있도록 기술 매칭을 추진합니다.
+                    </p>
+                  </div>
+            <div class="flex items-start space-x-6">
+              <div class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-soft-lg flex-shrink-0">
+                <i class="ri-check-line text-white text-2xl"></i>
+              </div>
+              <p class="text-lg leading-relaxed text-white/90">
+                다양한 기술보유자 네트워크를 통해,<br />
+                귀사에 적합한 기술을 연결합니다.
+              </p>
+                </div>
+            <div class="flex items-start space-x-6">
+              <div class="w-12 h-12 flex items-center justify-center bg-white/20 rounded-soft-lg flex-shrink-0">
+                <i class="ri-check-line text-white text-2xl"></i>
+              </div>
+              <p class="text-lg leading-relaxed text-white/90">
+                필요 시, 융자 등 자금 조달 경로를<br />
+                함께 설계하여 지원합니다.
+              </p>
+            </div>
+          </div>
+          <p class="text-2xl font-semibold text-white mt-16 text-center">
+            귀사에 딱 맞는<br />
+            솔루션을 제공합니다.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- 주요 서비스 소개 -->
+    <section class="min-h-screen flex items-center py-10 lg:py-16 bg-gradient-to-br from-gray-50 via-white to-primary-50">
+      <div class="container">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-8">주요 서비스</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            기술 수요자와 공급자를 연결하고,<br />
+            필요 시, 자금 조달까지 원스톱으로<br />
+            통합 솔루션을 제공합니다.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          <!-- 서비스 1 -->
+          <div class="group bg-white p-8 md:p-10 rounded-soft-xl shadow-soft hover:shadow-soft-lg transition-all duration-300 hover-lift h-full">
+            <div class="w-16 h-16 flex items-center justify-center bg-primary-100 rounded-soft-lg mb-8 group-hover:bg-primary-500 transition-colors duration-300">
+              <i class="ri-search-line text-2xl text-primary-500 group-hover:text-white transition-colors duration-300"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">기술 요청</h3>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+              필요한 기술과 특허를 빠르게 확보하여<br />
+              기업의 경쟁력을 강화할 수 있도록<br />
+              지원합니다.
+            </p>
+            <a
+              href="#tech-request"
+              class="group inline-flex items-center text-gray-600 hover:text-primary-600"
+            >
+              기술 도입 상담
+              <span class="inline-flex items-center">
+                <i class="ri-arrow-right-line ml-1 transition-transform group-hover:translate-x-1"></i>
+                <span class="ml-1 border-b border-transparent group-hover:border-primary-600">자세히</span>
+              </span>
+            </a>
+          </div>
+          <!-- 서비스 2 -->
+          <div class="group bg-white p-8 md:p-10 rounded-soft-xl shadow-soft hover:shadow-soft-lg transition-all duration-300 hover-lift h-full">
+            <div class="w-16 h-16 flex items-center justify-center bg-primary-100 rounded-soft-lg mb-8 group-hover:bg-primary-500 transition-colors duration-300">
+              <i class="ri-exchange-line text-2xl text-primary-500 group-hover:text-white transition-colors duration-300"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">기술 제안</h3>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+              보유하신 기술과 특허의 가치를<br />
+              극대화할 수 있도록<br />
+              최적의 매칭을 지원합니다.
+            </p>
+            <a
+              href="#tech-proposal"
+              class="group inline-flex items-center text-gray-600 hover:text-primary-600"
+            >
+              기술 제안
+              <span class="inline-flex items-center">
+                <i class="ri-arrow-right-line ml-1 transition-transform group-hover:translate-x-1"></i>
+                <span class="ml-1 border-b border-transparent group-hover:border-primary-600">자세히</span>
+              </span>
+            </a>
+          </div>
+          <!-- 서비스 3 -->
+          <div class="group bg-white p-8 md:p-10 rounded-soft-xl shadow-soft hover:shadow-soft-lg transition-all duration-300 hover-lift h-full">
+            <div class="w-16 h-16 flex items-center justify-center bg-primary-100 rounded-soft-lg mb-8 group-hover:bg-primary-500 transition-colors duration-300">
+              <i class="ri-funds-box-line text-2xl text-primary-500 group-hover:text-white transition-colors duration-300"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">자금 조달</h3>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+              기업 운영과 성장을 위한<br />
+              자금 확보를 위해<br />
+              맞춤형 조달 전략을 제공합니다.
+            </p>
+            <a
+              href="#funding-offset"
+              class="group inline-flex items-center text-gray-600 hover:text-primary-600"
+            >
+              자금 조달
+              <span class="inline-flex items-center">
+                <i class="ri-arrow-right-line ml-1 transition-transform group-hover:translate-x-1"></i>
+                <span class="ml-1 border-b border-transparent group-hover:border-primary-600">자세히</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 기술 요청 섹션 -->
+    <section id="tech-request" class="relative py-20 overflow-hidden">
+      <div class="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1920&q=80"
+          alt="Technology collaboration"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gray-900/85"></div>
+      </div>
+      <div class="relative container py-12">
+        <div class="max-w-4xl mx-auto text-white">
+          <h2 class="text-4xl font-bold mb-8">기술 요청</h2>
+          <h3 class="inline-block text-xl font-medium mb-8 text-white bg-white/20 px-4 py-2 rounded-soft">기술, 특허 확보 지원</h3>
+          <div class="prose prose-lg text-white/90">
+            <div class="bg-white/10 rounded-soft-xl p-8 mb-12">
+              <div class="flex items-start mb-6">
+                <i class="ri-check-line text-white text-xl mr-4 mt-1"></i>
+                <p class="flex-1">
+                  정부지원사업, 입찰, 벤처 인증, 투자유치 등에서<br />
+                  특허는 필수 요건이자 강력한 무기가 됩니다.
+                </p>
+              </div>
+              <div class="flex items-start">
+                <i class="ri-check-line text-white text-xl mr-4 mt-1"></i>
+                <p class="flex-1">
+                  기술력 향상 뿐 아니라 어떠한 목적이든,<br />
+                  상황에 맞는 맞춤형 특허 확보를 지원합니다.
+                </p>
+              </div>
+            </div>
+            <div class="bg-white/10 rounded-soft-xl p-8 mb-12">
+              <h4 class="flex items-center text-lg font-bold text-white mb-4 justify-center">
+                <i class="ri-money-dollar-circle-line text-white mr-2"></i>
+                중개 수수료 안내
+              </h4>
+              <p class="text-white/90 leading-relaxed text-center">
+                현재 산업통상자원부의 기술거래 활성화 지원사업의 일환으로,<br />
+                저희는 한시적으로 기술 도입 기업에게 중개 수수료를 청구하지 않습니다.<br />
+                본 혜택은 사업 종료 또는 정책 변경 시, 사전 안내 후 조정될 수 있습니다.<br />
+                <span class="text-white font-medium">(2025년 말까지는 중개 수수료 무료 정책이 유지됩니다.)</span>
+              </p>
+            </div>
+            <div class="text-center">
+              <a
+            href="https://naver.me/GEiNzuXG"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-soft transition-colors"
+          >
+            기술 도입 상담 신청
+            <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 기술 제안 섹션 -->
+    <section id="tech-proposal" class="py-22 bg-white">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-bold text-gray-900 mb-8">기술 제안</h2>
+          <h3 class="text-xl text-primary-600 font-medium mb-8">
+                기술, 특허 매각 지원
+              </h3>
+          <div class="prose prose-lg text-gray-700">
+                <p class="text-lg leading-relaxed mb-8">
+                  저희는 다양한 기술 이전 플랫폼, 연구기관, 기술보유자
+                  네트워크를 기반으로<br />
+                  이미 수많은 기술과 특허를 확보하고 있습니다.<br />
+                  그 결과, 기술을 도입하려는 기업들의 문의도 빠르게 늘고
+                  있으며,<br />
+                  기술-수요 간 매칭 확률도 높아지고 있습니다.
+                </p>
+            <div class="bg-primary-50 rounded-soft-xl p-6 mb-6">
+              <div class="flex items-start mb-2 justify-center">
+                <i class="ri-check-line text-primary-600 text-xl mr-4 mt-1"></i>
+                <p class="flex-1 text-left">
+                      수요자에게는: "딱 맞는 기술을 빠르고 편하게 도입할 수 있는
+                      곳"
+                    </p>
+                  </div>
+              <div class="flex items-start justify-center">
+                <i class="ri-check-line text-primary-600 text-xl mr-4 mt-1"></i>
+                <p class="flex-1 text-left">
+                      공급자에게는: "기술이 실제 거래로 이어질 수 있는 곳"
+                    </p>
+                  </div>
+                </div>
+                <p class="text-xl font-medium text-gray-900 mb-8 text-center">
+                  이곳에 <span class="font-bold text-primary-600">매각 신청</span>만 해두셔도,<br />
+                  기술 수요와의 매칭 확률을 높일 수 있습니다.
+                </p>
+            <div class="bg-primary-50 rounded-soft-xl p-6 mb-8">
+              <h4 class="flex items-center text-lg font-bold text-gray-900 mb-4 justify-center">
+                <i class="ri-money-dollar-circle-line text-primary-600 mr-2"></i>
+                중개 수수료 안내
+                  </h4>
+              <p class="text-gray-700 leading-relaxed text-center">
+                ※ 특허권자에게는 거래 성사 시 중개 수수료가 부과될 수 있으며,<br />
+                    이는 별도 협의 후 진행됩니다.<br />
+                <span class="text-primary-600 font-medium">(기술 도입 기업은 2025년 말까지 중개 수수료가 없습니다.)</span>
+                  </p>
+                </div>
+                <div class="text-center">
+                  <a
+                href="https://naver.me/52cDohKU"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-soft transition-colors"
+              >
+                기술 매각/라이선스 상담 신청
+                <i class="ri-arrow-right-line ml-2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+    <!-- 자금 조달 섹션 -->
+    <div id="funding-offset" class="h-8 -mt-8"></div> <!-- 임시로 추가, 위치 확인 -->
+    <section id="funding" class="relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img 
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80"
+          alt="Financial growth"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gray-900/85"></div>
+        </div>
+      <div class="relative container py-24">
+        <div class="max-w-4xl mx-auto text-white">
+          <h2 class="text-4xl font-bold mb-8">자금 조달 솔루션</h2>
+          <h3 class="text-xl font-medium mb-8">
+            특허 확보와 자금 조달, 두 가지를 한 번에 해결합니다.
+          </h3>
+          <div class="prose prose-lg text-white/90">
+            <p class="text-lg leading-relaxed mb-8">
+              기술을 도입하고 싶지만, 비용이 부담되시나요?<br />
+              합리적인 비용으로 특허를 확보하도록 지원함과 동시에,<br />
+              융자 등 외부 자금 연계를 통해 실제 자금 확보까지 지원합니다.
+            </p>
+            <div class="bg-white/10 rounded-soft-xl p-8 mb-12">
+              <div class="flex items-start mb-6 justify-center">
+                <i class="ri-check-line text-white text-xl mr-4 mt-1"></i>
+                <p class="flex-1 text-left">특허 확보 + 자금 확보를 동시에 설계</p>
+              </div>
+              <div class="flex items-start mb-6 justify-center">
+                <i class="ri-check-line text-white text-xl mr-4 mt-1"></i>
+                <p class="flex-1 text-left">
+                  기술 도입에 필요한 실무 중심의 자금 전략 수립
+                </p>
+              </div>
+              <div class="flex items-start justify-center">
+                <i class="ri-check-line text-white text-xl mr-4 mt-1"></i>
+                <p class="flex-1 text-left">
+                  정부지원금, 보조금, 융자 연계 등 다양한 조달 경로 안내
+                </p>
+              </div>
+            </div>
+            <p class="text-xl font-medium text-white mb-12 text-center">
+              부담 없이 기술을 확보하고<br />
+              자금 조달까지 함께 준비하세요.
+            </p>
+            <div class="text-center">
+              <a
+                href="https://naver.me/Gq9PcNIu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-soft transition-colors"
+              >
+                자금 조달 상담 신청
+                <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 공지사항 섹션 -->
+    <section id="notice" class="py-20 bg-primary-50">
+      <div class="container mx-auto">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6 flex items-center justify-center">
+            <i class="ri-notification-3-line text-primary-600 mr-3"></i>
+            공지사항
+          </h2>
+          <div class="grid gap-6 mt-8">
+            <a href="notice_202505_event.html" class="group bg-white p-6 rounded-soft-xl shadow-soft hover:shadow-soft-lg transition-all duration-300 hover-lift">
+              <div class="flex justify-between items-center">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors">2025년 상반기 기술중개 수수료 지원 안내</h3>
+                <span class="text-gray-500">2025.05.14</span>
+              </div>
+              <p class="text-gray-600 mt-2 line-clamp-2">산업통상자원부의 기술거래 활성화 지원사업 선정에 따라, 2025년 말까지 기술 도입 기업에 대한 중개 수수료가 면제됩니다.</p>
+            </a>
+            <a href="notice.html" class="inline-flex items-center justify-center text-primary-600 font-medium hover:text-primary-700 transition-colors mt-4">
+              더 많은 소식 보기
+              <i class="ri-arrow-right-line ml-2"></i>
+              </a>
+            </div>
+          </div>
+      </div>
+    </section>
+    <!-- 이용약관 모달 -->
+    <div id="terms-modal" class="fixed inset-0 z-50 hidden">
+      <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm transition-opacity"></div>
+      <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-soft-xl shadow-soft-lg w-full max-w-4xl max-h-[90vh] overflow-hidden">
+          <div class="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+            <h2 class="text-2xl font-bold text-gray-900">이용약관</h2>
+            <button
+              onclick="closeTermsModal()"
+              class="text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              <i class="ri-close-line text-2xl"></i>
+            </button>
+          </div>
+          <div class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+            <div class="prose prose-lg max-w-none">
+              <p class="text-gray-700 mb-8">
+                본 약관은 ㈜플랜터(이하 "회사")가 운영하는 웹사이트(이하 "사이트")에서 제공하는 정보 서비스 및 신청 접수 서비스(기술 요청, 기술 제안, 자금 조달 관련 문의 등)의 이용과 관련하여 회사와 이용자 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제1조 (목적)</h3>
+              <p class="text-gray-700 mb-8">
+                이 약관은 회사가 운영하는 사이트를 통해 제공하는 각종 정보 서비스 및 신청 접수 서비스의 이용 조건 및 절차, 회사와 이용자의 권리·의무 및 책임사항을 규정합니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제2조 (정의)</h3>
+              <p class="text-gray-700 mb-4">이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+              <ul class="list-disc pl-6 mb-8 text-gray-700">
+                <li class="mb-2">"사이트"란 회사가 운영하는 기술거래 관련 정보 제공 웹페이지를 말합니다.</li>
+                <li class="mb-2">"이용자"란 본 사이트에 접속하여 본 약관에 따라 회사가 제공하는 서비스를 이용하는 자를 말합니다.</li>
+                <li>"서비스"란 기술 요청, 기술 제안, 자금 조달 등과 관련된 온라인 신청 접수, 정보 제공 및 연계 활동을 말합니다.</li>
+            </ul>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제3조 (약관의 효력 및 변경)</h3>
+              <p class="text-gray-700 mb-8">
+                본 약관은 사이트에 게시함으로써 효력을 발생합니다.<br>
+                회사는 관련 법령을 위반하지 않는 범위 내에서 약관을 개정할 수 있으며, 개정 시 최소 7일 전 사이트 공지사항 또는 이메일을 통해 고지합니다.<br>
+                이용자는 개정된 약관에 동의하지 않을 경우 서비스 이용을 중단할 수 있습니다. 변경 고지 후 7일 이내 이의를 제기하지 않은 경우 동의한 것으로 간주됩니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제4조 (서비스의 내용)</h3>
+              <p class="text-gray-700 mb-4">회사는 다음과 같은 서비스를 제공합니다.</p>
+              <ul class="list-disc pl-6 mb-4 text-gray-700">
+                <li class="mb-2">기술 요청 및 제안 접수, 자금 조달 상담 신청서의 온라인 수집</li>
+                <li class="mb-2">신청서를 기반으로 한 기술 수요자와 공급자 간의 매칭 또는 연계 시도</li>
+                <li>기타 기술 거래 및 자금 연계 관련 안내 및 정보 제공</li>
+              </ul>
+              <p class="text-gray-700 mb-8">
+                ※ 회사는 서비스 내용, 범위, 조건을 변경하거나 중단할 수 있으며, 이 경우 최소 7일 전 사이트 공지사항 또는 이메일을 통해 고지합니다. 다만, 시스템 장애, 법령 변경, 기타 사유 등 긴급하거나 불가피한 사정이 있는 경우에는 사후에 고지할 수 있습니다.<br>
+                ※ 회사는 단순한 정보 매개 및 신청 접수 창구 역할을 수행하며, 매칭 성공, 제3자와의 직접 거래 또는 계약 체결에 대해 보증하거나 법적 책임을 지지 않습니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제5조 (개인정보 보호)</h3>
+              <p class="text-gray-700 mb-8">
+                회사는 "개인정보보호법" 등 관련 법령에 따라 이용자의 개인정보를 보호하며, 개인정보 처리에 관한 사항은 별도로 게시한 [개인정보처리방침]에 따릅니다.<br>
+                이용자는 네이버 MYBOX 폼 내 체크박스를 통해 개인정보 수집·이용에 동의하며, 회사는 해당 정보를 신청 목적 범위 내에서만 사용합니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제6조 (지적재산권)</h3>
+              <p class="text-gray-700 mb-8">
+                사이트에 게시된 모든 콘텐츠(문서, 이미지, 로고, 그래픽 등)에 대한 저작권 및 지적재산권은 회사 또는 정당한 권리자에게 귀속됩니다.<br>
+                이용자가 서비스를 통해 제출한 신청 내용(예: 기술 제안, 특허 정보)의 지적재산권은 이용자 또는 정당한 권리자에게 귀속됩니다. 회사는 이를 신청 목적(매칭, 연계) 범위 내에서만 사용합니다.<br>
+                이용자는 회사의 사전 서면 동의 없이 콘텐츠를 복제, 배포, 전송, 수정, 출판, 상업적으로 이용할 수 없습니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제7조 (면책조항)</h3>
+              <p class="text-gray-700 mb-8">
+                회사는 제공된 정보의 정확성, 신뢰성, 적시성에 대해 보증하지 않으며, 이용자가 이를 바탕으로 행한 행동의 결과에 대해 책임을 지지 않습니다.<br>
+                회사는 기술 거래, 자금 연계, 제3자와의 계약 체결 등과 관련하여 이용자 간 또는 이용자와 제3자 간 발생한 분쟁에 대해 어떠한 책임도 부담하지 않습니다.<br>
+                회사는 사이트의 유지보수, 시스템 오류, 외부 해킹, 불가항력적 사유 등으로 인한 서비스 중단이나 손해에 대해 책임을 지지 않습니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제8조 (준거법 및 관할)</h3>
+              <p class="text-gray-700 mb-8">
+                본 약관의 해석 및 적용에 관하여는 대한민국 법령이 적용됩니다.<br>
+                서비스 이용과 관련하여 회사와 이용자 간에 발생한 분쟁에 대하여는 서울중앙지방법원을 제1심 관할 법원으로 합니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제9조 (서비스 이용 제한)</h3>
+              <p class="text-gray-700 mb-4">이용자는 다음 행위를 해서는 안 됩니다.</p>
+              <ul class="list-disc pl-6 mb-4 text-gray-700">
+                <li class="mb-2">타인의 개인정보를 도용하거나 허위 정보를 제공하는 행위</li>
+                <li class="mb-2">불법적이거나 부적절한 내용(예: 음란물, 명예훼손)을 제출하는 행위</li>
+                <li>사이트의 정상적인 운영을 방해하는 행위(예: 과도한 요청, 해킹 시도)</li>
+              </ul>
+              <p class="text-gray-700 mb-8">
+                회사는 위 행위를 확인할 경우, 이용자의 서비스 접근을 제한할 수 있으며, 필요한 경우 법적 조치를 취할 수 있습니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">제10조 (분쟁 해결)</h3>
+              <p class="text-gray-700 mb-8">
+                회사와 이용자는 서비스 이용과 관련한 분쟁을 원만히 해결하기 위해 상호 협의합니다.<br>
+                협의로 해결되지 않을 경우, 제8조에 따른 관할 법원에서 해결합니다.
+              </p>
+
+              <div class="text-gray-600 text-sm">
+                <p>· 공고일자 : 2025년 5월 14일</p>
+                <p>· 시행일자 : 2025년 5월 21일</p>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 개인정보처리방침 모달 -->
+    <div id="privacy-modal" class="fixed inset-0 z-50 hidden">
+      <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm transition-opacity"></div>
+      <div class="fixed inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-soft-xl shadow-soft-lg w-full max-w-4xl max-h-[90vh] overflow-hidden">
+          <div class="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+            <h2 class="text-2xl font-bold text-gray-900">개인정보처리방침</h2>
+            <button
+              onclick="closePrivacyModal()"
+              class="text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              <i class="ri-close-line text-2xl"></i>
+            </button>
+          </div>
+          <div class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+            <div class="prose prose-lg max-w-none">
+              <p class="text-gray-700 mb-8">
+                ㈜플랜터(이하 "회사")는 이용자의 개인정보를 소중히 보호하며, 「개인정보보호법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 등 관련 법령을 준수합니다. 회사는 네이버 MYBOX 폼을 통해 개인정보를 수집·이용하며, 이를 투명하게 공개합니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">1. 개인정보의 수집 항목 및 목적</h3>
+              <p class="text-gray-700 mb-4">회사는 네이버 MYBOX 폼을 통해 아래와 같은 목적에 필요한 개인정보를 수집합니다. 수집 전 정보주체의 동의를 받습니다.</p>
+              <div class="space-y-6 mb-8">
+          <div>
+                  <h4 class="font-semibold text-gray-800">① 기술 요청 신청</h4>
+                  <p class="mb-2"><span class="font-medium">수집 항목:</span> 회사명, 담당자 성명, 연락처(전화번호 또는 이메일), 요청 내용</p>
+                  <p><span class="font-medium">수집 목적:</span> 기술 요청 접수, 적합한 기술 매칭, 상담 및 안내 연락</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">② 기술 제안 신청</h4>
+                  <p class="mb-2"><span class="font-medium">수집 항목:</span> 출원인(또는 권리자) 정보, 특허번호, 성명, 연락처(전화번호 또는 이메일), 신청 내용</p>
+                  <p><span class="font-medium">수집 목적:</span> 기술 제안 접수, 보유 기술 확인, 매입 희망 기업과의 매칭 및 안내 연락</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">③ 자금 조달 문의</h4>
+                  <p class="mb-2"><span class="font-medium">수집 항목:</span> 회사명, 담당자 성명, 연락처(전화번호 또는 이메일), 신청 내용</p>
+                  <p><span class="font-medium">수집 목적:</span> 자금 조달 관련 상담 및 연계 안내</p>
+                </div>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">2. 개인정보의 보유 및 이용 기간</h3>
+              <p class="text-gray-700 mb-2"><span class="font-medium">보유 기간:</span> 수집된 개인정보는 요청일 또는 신청일로부터 최대 3년간 보유·이용됩니다.</p>
+              <p class="text-gray-700 mb-8"><span class="font-medium">삭제 요청:</span> 정보주체가 삭제를 요청하거나 이용 목적이 달성된 경우, 지체 없이 파기합니다.</p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">3. 개인정보의 제3자 제공</h3>
+              <p class="text-gray-700 mb-4">회사는 원칙적으로 개인정보를 제3자에게 제공하지 않습니다. 다만, 아래 경우는 예외로 합니다:</p>
+              <ul class="list-disc pl-6 mb-8 text-gray-700">
+                <li>정보주체의 동의가 있는 경우</li>
+                <li>법령에 따라 제공이 요구되는 경우(예: 수사기관 요청)</li>
+                <li>기술 매칭 또는 자금 조달을 위해 파트너 기업(예: 투자사, 기술 매입 기업)과 공유가 필요한 경우, 개별 동의를 받은 뒤 진행합니다.</li>
+              </ul>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">4. 개인정보가 저장되는 시스템</h3>
+              <p class="text-gray-700 mb-8">
+                회사는 네이버 MYBOX(운영: 네이버 주식회사)를 통해 개인정보를 수집 및 저장하고 있으며, 해당 시스템의 보안 환경에 따라 보호 조치를 시행하고 있습니다.<br>
+                네이버 MYBOX는 자체 보안체계를 통해 데이터 암호화, 접근 제한 등의 기술적 조치를 수행합니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">5. 개인정보의 파기</h3>
+              <p class="text-gray-700 mb-4">개인정보의 보유 기간이 끝나거나 이용 목적이 달성된 경우, 해당 정보를 지체 없이 파기합니다:</p>
+              <ul class="list-disc pl-6 mb-8 text-gray-700">
+                <li>전자적 파일: 복구 불가능한 방식으로 삭제</li>
+                <li>물리적 기록: 파쇄 또는 소각</li>
+              </ul>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">6. 개인정보의 보안 조치</h3>
+              <p class="text-gray-700 mb-8">
+                네이버 MYBOX는 자체 보안 시스템을 운영하고 있으며, 회사는 해당 시스템을 통해 개인정보를 안전하게 저장하고 있습니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">7. 정보주체의 권리</h3>
+              <p class="text-gray-700 mb-4">정보주체는 아래 권리를 행사할 수 있습니다:</p>
+              <ul class="list-disc pl-6 mb-8 text-gray-700">
+                <li><span class="font-medium">권리:</span> 개인정보 정정, 삭제, 처리 정지 요청</li>
+                <li><span class="font-medium">행사 방법:</span> 문의처로 이메일 요청</li>
+                <li><span class="font-medium">처리 기한:</span> 접수 후 10일 이내 처리(법령에 따라 예외 가능)</li>
+              </ul>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">8. 개인정보 보호 책임자 및 문의처</h3>
+              <p class="text-gray-700 mb-8">
+                개인정보 관련 문의는 아래로 연락주시기 바랍니다:<br>
+                <span class="font-medium">책임자:</span> 김형철 (개인정보 보호 책임자)<br>
+                <span class="font-medium">이메일:</span> chulec [at] naver [dot] com
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">9. 개인정보처리방침의 변경</h3>
+              <p class="text-gray-700 mb-8">
+                방침이 변경될 경우, 최소 7일 전 웹사이트 공지사항 또는 이메일로 안내합니다. 중요한 변경(예: 수집 항목 추가, 제3자 제공)은 동의를 다시 받습니다.
+              </p>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-4">10. 쿠키 및 유사 기술</h3>
+              <p class="text-gray-700 mb-8">
+                현재 회사는 쿠키를 사용하지 않습니다. 추후 쿠키 또는 유사 기술 사용 시 별도의 안내를 하겠습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 푸터 -->
+    <footer class="bg-gray-900 pt-20 pb-10">
+      <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+          <div class="md:col-span-4">
+            <a href="#" class="text-2xl font-bold text-white hover:text-primary-100 transition-colors mb-8 inline-block">
+              <img src="Logo_planter_RE1.png" alt="PLANTER" class="h-8 w-auto">
+            </a>
+            <p class="text-gray-400 mb-8 text-lg">
+              기술 공급자와 수요자를 연결하는<br />
+              최고의 기술 중개 플랫폼
+            </p>
+            <div class="flex items-center space-x-3 text-lg">
+              <div class="relative group">
+                <span class="text-gray-300 hover:text-white transition-colors cursor-help font-bold tracking-wider bg-gray-800 px-3 py-1 rounded-md">아바드</span>
+                <div class="absolute top-full left-0 mt-2 bg-gray-900 text-white py-2 px-4 rounded-md shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-50">
+                  <p class="text-sm font-semibold">2014년 설립. 특허 매각을 중심으로 하는<br />IP 비즈니스 회사입니다.</p>
+                </div>
+              </div>
+              <span class="text-gray-600">|</span>
+              <div class="relative group">
+                <span class="text-gray-300 hover:text-white transition-colors cursor-help font-extrabold tracking-widest bg-gray-800 px-3 py-1 rounded-md">플랜터</span>
+                <div class="absolute top-full left-0 mt-2 bg-gray-900 text-white py-2 px-4 rounded-md shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-50">
+                  <p class="text-sm font-semibold">2023년, 아바드의 기술거래·사업화 부문을<br />분리 설립한 전문 중개회사입니다.</p>
+                </div>
+              </div>
+              <span class="text-gray-600">|</span>
+              <div class="relative group">
+                <span class="text-gray-300 hover:text-white transition-colors cursor-help font-bold tracking-wider bg-gray-800 px-3 py-1 rounded-md">테스닥</span>
+                <div class="absolute top-full left-0 mt-2 bg-gray-900 text-white py-2 px-4 rounded-md shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-50">
+                  <p class="text-sm font-semibold">테스닥은 플랜터의 다음 도약을 위해 준비되고 있는<br />차세대 브랜드입니다. (준비중)<br />(상표등록일 2025.04.21 / 등록번호 40-2348032)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-lg font-semibold text-white mb-6">서비스</h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="#tech-request"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >기술 요청</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#tech-proposal"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >기술 제안</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#funding-offset"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >자금 조달</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="md:col-span-4">
+            <h3 class="text-lg font-semibold text-white mb-6">회사 정보</h3>
+            <div class="text-gray-400 space-y-2">
+              <p>주식회사 플랜터</p>
+              <p>사업자등록번호 : 274-87-02935</p>
+              <p>대표 : 김형철</p>
+              <p class="break-keep">주소 : 경기도 안양시 동안구 시민대로 327번길 11-41, 3297호</p>
+              <p>이메일: chulec [at] naver [dot] com</p>
+              <p class="text-sm mt-2">
+                ※ 본 웹사이트에 게시된 이메일 주소는 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여
+                무단으로 수집되는 것을 거부하며, 이를 위반 시 「정보통신망법」에 따라 형사 처벌될 수 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-400 text-sm mb-4 md:mb-0">
+              <p>© 2025 주식회사 플랜터. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6">
+              <a
+                href="javascript:void(0)"
+                onclick="event.preventDefault(); openTermsModal();"
+                class="text-gray-400 hover:text-white transition-colors text-sm"
+                >이용약관</a
+              >
+              <a
+                href="javascript:void(0)"
+                onclick="event.preventDefault(); openPrivacyModal();"
+                class="text-gray-400 hover:text-white transition-colors text-sm"
+                >개인정보처리방침</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for navigation links
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            } else {
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }
+            }
+          });
+        });
+
+        // Fade-in animation for sections
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        fadeElements.forEach(element => {
+          observer.observe(element);
+        });
+
+        // Terms modal functionality
+        window.openTermsModal = function() {
+          const modal = document.getElementById('terms-modal');
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        window.closeTermsModal = function() {
+          const modal = document.getElementById('terms-modal');
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        const modal = document.getElementById('terms-modal');
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            closeTermsModal();
+          }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closeTermsModal();
+          }
+        });
+
+        // Privacy modal functionality
+        window.openPrivacyModal = function() {
+          const modal = document.getElementById('privacy-modal');
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        window.closePrivacyModal = function() {
+          const modal = document.getElementById('privacy-modal');
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        // Close privacy modal when clicking outside
+        const privacyModal = document.getElementById('privacy-modal');
+        privacyModal.addEventListener('click', function(e) {
+          if (e.target === privacyModal) {
+            closePrivacyModal();
+          }
+        });
+
+        // Close privacy modal with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            closePrivacyModal();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2025년 기술중개 수수료 지원 안내 - 기술중개 플랫폼</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#F0F5FF',
+                100: '#E5EDFF',
+                200: '#BFDBFE',
+                300: '#93C5FD',
+                400: '#60A5FA',
+                500: '#2563EB',
+                600: '#1E40AF',
+                700: '#1E3A8A',
+                800: '#1E3A8A',
+                900: '#1E3A8A',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+            },
+            boxShadow: {
+              'soft-sm': '0 2px 8px -2px rgba(30, 58, 138, 0.05), 0 4px 16px -4px rgba(30, 58, 138, 0.05)',
+              'soft': '0 2px 15px -3px rgba(30, 58, 138, 0.08), 0 10px 20px -2px rgba(30, 58, 138, 0.04)',
+              'soft-lg': '0 4px 24px -4px rgba(30, 58, 138, 0.08), 0 16px 32px -4px rgba(30, 58, 138, 0.04)',
+            },
+            borderRadius: {
+              'soft-sm': '0.375rem',
+              'soft': '0.5rem',
+              'soft-lg': '0.75rem',
+              'soft-xl': '1rem',
+              'soft-2xl': '1.5rem',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Base Styles */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- 헤더 및 네비게이션 -->
+    <header class="fixed top-0 left-0 right-0 z-50 shadow-soft" style="background-color: #2C3C7C;">
+      <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+        <div class="flex items-center">
+          <a href="PLANTER_WEB1.html" class="text-2xl font-bold text-white hover:text-primary-100 transition-colors">
+            <img src="Logo_planter_RE1.png" alt="PLANTER" class="h-8 w-auto">
+          </a>
+        </div>
+        <nav class="flex items-center space-x-2">
+          <a
+            href="PLANTER_WEB1.html"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >홈</a
+          >
+          <a
+            href="PLANTER_WEB1.html#tech-request"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >기술 요청</a
+          >
+          <a
+            href="PLANTER_WEB1.html#tech-proposal"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >기술 제안</a
+          >
+          <a
+            href="PLANTER_WEB1.html#funding"
+            class="px-5 py-2 text-white hover:text-primary-100 font-medium rounded-soft transition-colors"
+            >자금 조달</a
+          >
+          <a
+            href="notice.html"
+            class="px-5 py-2 text-primary-100 font-medium rounded-soft transition-colors"
+            >공지사항</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- 공지사항 상세 -->
+    <main class="pt-32 pb-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <!-- 뒤로가기 -->
+          <a href="notice.html" class="inline-flex items-center text-gray-600 hover:text-primary-600 transition-colors mb-8">
+            <i class="ri-arrow-left-line mr-2"></i>
+            목록으로 돌아가기
+          </a>
+          
+          <!-- 공지 내용 -->
+          <article class="bg-white rounded-soft-xl shadow-soft p-8 mb-8">
+            <header class="mb-8 pb-8 border-b border-gray-200">
+              <h1 class="text-3xl font-bold text-gray-900 mb-4">2025년 기술중개 수수료 지원 안내</h1>
+              <div class="flex items-center text-gray-500">
+                <span>2025.05.14</span>
+              </div>
+            </header>
+            
+            <div class="prose prose-lg max-w-none">
+              <p class="text-gray-700 mb-6">
+                플랜터는 산업통상자원부의 기술거래 활성화 정책 방향에 따라,<br>
+                2025년 말까지 <strong>기술 도입 기업에게 중개 수수료를 받지 않습니다</strong>.
+              </p>
+              <p class="text-gray-700 mb-6">
+                이는 정부 사업 참여에 따른 직접 보조가 아닌,<br>
+                당사의 자체 정책 결정에 따른 지원입니다.
+              </p>
+              <h2 class="text-xl font-bold text-gray-900 mb-4">지원 내용</h2>
+              <ul class="list-disc pl-6 mb-6 text-gray-700">
+                <li>지원 대상: 기술 도입을 희망하는 모든 기업</li>
+                <li>지원 내용: 기술중개 수수료 전액</li>
+                <li>지원 기간: 2025년 12월 31일까지</li>
+              </ul>
+              <h2 class="text-xl font-bold text-gray-900 mb-4">유의사항</h2>
+              <ul class="list-disc pl-6 mb-6 text-gray-700">
+                <li>본 지원은 정부 사업 종료 또는 정책 변경 시<br>조기 종료될 수 있습니다.</li>
+                <li>기술 제공자(특허권자)의 경우<br>별도 수수료가 발생할 수 있습니다.</li>
+                <li>상세한 내용은 기술 도입 상담 시 안내해드립니다.</li>
+              </ul>
+              <div class="bg-primary-50 rounded-soft-lg p-6 mb-6">
+                <p class="text-gray-700">
+                  문의사항이 있으시다면<br>
+                  언제든 연락 주시기 바랍니다.<br>
+                  이메일: chulec [at] naver [dot] com
+                </p>
+                <p class="text-sm mt-2">
+                  ※ 본 웹사이트에 게시된 이메일 주소는<br>
+                  전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여<br>
+                  무단으로 수집되는 것을 거부하며,<br>
+                  이를 위반 시 「정보통신망법」에 따라 형사 처벌될 수 있습니다.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 이전/다음 글 -->
+          <nav class="flex items-center justify-between">
+            <span class="inline-flex items-center px-4 py-2 bg-gray-100 rounded-soft text-gray-400">
+              <i class="ri-arrow-left-line mr-2"></i>
+              <span>
+                <div class="text-sm">이전 글</div>
+                <div>이전 글이 없습니다</div>
+              </span>
+            </span>
+            <a
+              href="notice_202505_status.html"
+              class="inline-flex items-center px-4 py-2 bg-white rounded-soft shadow-soft hover:shadow-soft-lg transition-all duration-300"
+            >
+              <span class="text-right">
+                <div class="text-sm text-gray-500">다음 글</div>
+                <div class="text-gray-900">특허 매칭 서비스 운영 현황 및 온라인 확장 안내</div>
+              </span>
+              <i class="ri-arrow-right-line ml-2"></i>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+   <!-- 푸터 -->
+   <footer class="bg-gray-900 pt-20 pb-10">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+        <div class="md:col-span-4">
+          <a href="#" class="text-2xl font-bold text-white hover:text-primary-100 transition-colors mb-8 inline-block">
+            <img src="Logo_planter_RE1.png" alt="PLANTER" class="h-8 w-auto">
+          </a>
+          <p class="text-gray-400 mb-8 text-lg">
+            기술 공급자와 수요자를 연결하는<br />
+            최고의 기술 중개 플랫폼
+          </p>
+          <div class="flex items-center space-x-3 text-lg">
+            <div class="relative group">
+              <span class="text-gray-300 hover:text-white transition-colors cursor-help font-bold tracking-wider bg-gray-800 px-3 py-1 rounded-md">아바드</span>
+              <div class="absolute top-full left-0 mt-2 bg-gray-900 text-white py-2 px-4 rounded-md shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-50">
+                <p class="text-sm font-semibold">2014년 설립. 특허 매각을 중심으로 하는<br />IP 비즈니스 회사입니다.</p>
+              </div>
+            </div>
+            <span class="text-gray-600">|</span>
+            <div class="relative group">
+              <span class="text-gray-300 hover:text-white transition-colors cursor-help font-extrabold tracking-widest bg-gray-800 px-3 py-1 rounded-md">플랜터</span>
+              <div class="absolute top-full left-0 mt-2 bg-gray-900 text-white py-2 px-4 rounded-md shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-50">
+                <p class="text-sm font-semibold">2023년, 아바드의 기술거래·사업화 부문을<br />분리 설립한 전문 중개회사입니다.</p>
+              </div>
+            </div>
+            <span class="text-gray-600">|</span>
+            <div class="relative group">
+              <span class="text-gray-300 hover:text-white transition-colors cursor-help font-bold tracking-wider bg-gray-800 px-3 py-1 rounded-md">테스닥</span>
+              <div class="absolute top-full left-0 mt-2 bg-gray-900 text-white py-2 px-4 rounded-md shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-50">
+                <p class="text-sm font-semibold">테스닥은 플랜터의 다음 도약을 위해 준비되고 있는<br />차세대 브랜드입니다. (준비중)<br />(상표등록일 2025.04.21 / 등록번호 40-2348032)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="text-lg font-semibold text-white mb-6">서비스</h3>
+          <ul class="space-y-4">
+            <li>
+              <a
+                href="PLANTER_WEB1.html#tech-request"
+                class="text-gray-400 hover:text-white transition-colors"
+                >기술 요청</a
+              >
+            </li>
+            <li>
+              <a
+                href="PLANTER_WEB1.html#tech-proposal"
+                class="text-gray-400 hover:text-white transition-colors"
+                >기술 제안</a
+              >
+            </li>
+            <li>
+              <a
+                href="PLANTER_WEB1.html#funding-offset"
+                class="text-gray-400 hover:text-white transition-colors"
+                >자금 조달</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="md:col-span-4">
+          <h3 class="text-lg font-semibold text-white mb-6">회사 정보</h3>
+          <div class="text-gray-400 space-y-2">
+            <p>주식회사 플랜터</p>
+            <p>사업자등록번호 : 274-87-02935</p>
+            <p>대표 : 김형철</p>
+            <p class="break-keep">주소 : 경기도 안양시 동안구 시민대로 327번길 11-41, 3297호</p>
+            <p>이메일: chulec [at] naver [dot] com</p>
+            <p class="text-sm mt-2">
+              ※ 본 웹사이트에 게시된 이메일 주소는 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여
+              무단으로 수집되는 것을 거부하며, 이를 위반 시 「정보통신망법」에 따라 형사 처벌될 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="text-gray-400 text-sm mb-4 md:mb-0">
+            <p>© 2025 주식회사 플랜터. All rights reserved.</p>
+          </div>
+          <div class="flex space-x-6">
+            <a
+              href="javascript:void(0)"
+              onclick="event.preventDefault(); openTermsModal();"
+              class="text-gray-400 hover:text-white transition-colors"
+              >이용약관</a>
+            <a
+              href="javascript:void(0)"
+              onclick="event.preventDefault(); openPrivacyModal();"
+              class="text-gray-400 hover:text-white transition-colors text-sm"
+              >개인정보처리방침</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fade-in animation for sections
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        fadeElements.forEach(element => {
+          observer.observe(element);
+        });
+      });
+    </script>
+  </body>
+</html> 
