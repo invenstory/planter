@@ -205,7 +205,7 @@
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
         <div class="md:col-span-4">
-          <a href="/index.html" class="text-2xl font-bold text-white hover:text-primary-100 transition-colors mb-8 inline-block">
+          <a href="#" class="text-2xl font-bold text-white hover:text-primary-100 transition-colors mb-8 inline-block">
             <img src="Logo_planter_RE1.png" alt="PLANTER" class="h-8 w-auto">
           </a>
           <p class="text-gray-400 mb-8 text-lg">
@@ -299,7 +299,89 @@
     </div>
   </footer>
 
+ <!-- 이용약관 모달 -->
+ <div id="terms-modal" class="fixed inset-0 z-50 hidden">
+  <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm transition-opacity"></div>
+  <div class="fixed inset-0 flex items-center justify-center p-4">
+    <div class="bg-white rounded-soft-xl shadow-soft-lg w-full max-w-4xl max-h-[90vh] overflow-hidden">
+      <div class="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+        <h2 class="text-2xl font-bold text-gray-900">이용약관</h2>
+        <button
+          onclick="closeTermsModal()"
+          class="text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          <i class="ri-close-line text-2xl"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+        <!-- 이용약관 내용 -->
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 mb-8">
+            본 약관은 ㈜플랜터(이하 "회사")가 운영하는 웹사이트(이하 "사이트")에서 제공하는 정보 서비스 및 신청 접수 서비스(기술 요청, 기술 제안, 자금 조달 관련 문의 등)의 이용과 관련하여 회사와 이용자 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
+          </p>
 
+          <h3 class="text-xl font-bold text-gray-900 mb-4">제1조 (목적)</h3>
+          <p class="text-gray-700 mb-8">
+            이 약관은 회사가 운영하는 사이트를 통해 제공하는 각종 정보 서비스 및 신청 접수 서비스의 이용 조건 및 절차, 회사와 이용자의 권리·의무 및 책임사항을 규정합니다.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 mb-4">제2조 (정의)</h3>
+          <p class="text-gray-700 mb-4">이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+          <ul class="list-disc pl-6 mb-8 text-gray-700">
+            <li class="mb-2">"사이트"란 회사가 운영하는 기술거래 관련 정보 제공 웹페이지를 말합니다.</li>
+            <li class="mb-2">"이용자"란 본 사이트에 접속하여 본 약관에 따라 회사가 제공하는 서비스를 이용하는 자를 말합니다.</li>
+            <li>"서비스"란 기술 요청, 기술 제안, 자금 조달 등과 관련된 온라인 신청 접수, 정보 제공 및 연계 활동을 말합니다.</li>
+          </ul>
+
+          <div class="text-gray-600 text-sm">
+            <p>· 공고일자 : 2025년 5월 14일</p>
+            <p>· 시행일자 : 2025년 5월 21일</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 개인정보처리방침 모달 -->
+<div id="privacy-modal" class="fixed inset-0 z-50 hidden">
+  <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm transition-opacity"></div>
+  <div class="fixed inset-0 flex items-center justify-center p-4">
+    <div class="bg-white rounded-soft-xl shadow-soft-lg w-full max-w-4xl max-h-[90vh] overflow-hidden">
+      <div class="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+        <h2 class="text-2xl font-bold text-gray-900">개인정보처리방침</h2>
+        <button
+          onclick="closePrivacyModal()"
+          class="text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          <i class="ri-close-line text-2xl"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+        <!-- 개인정보처리방침 내용 -->
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 mb-8">
+            ㈜플랜터(이하 "회사")는 이용자의 개인정보를 소중히 보호하며, 「개인정보보호법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 등 관련 법령을 준수합니다. 회사는 네이버 MYBOX 폼을 통해 개인정보를 수집·이용하며, 이를 투명하게 공개합니다.
+          </p>
+
+          <h3 class="text-xl font-bold text-gray-900 mb-4">1. 개인정보의 수집 항목 및 목적</h3>
+          <p class="text-gray-700 mb-4">회사는 네이버 MYBOX 폼을 통해 아래와 같은 목적에 필요한 개인정보를 수집합니다. 수집 전 정보주체의 동의를 받습니다.</p>
+          <div class="space-y-6 mb-8">
+            <div>
+              <h4 class="font-semibold text-gray-800">① 기술 요청 신청</h4>
+              <p class="mb-2"><span class="font-medium">수집 항목:</span> 회사명, 담당자 성명, 연락처(전화번호 또는 이메일), 요청 내용</p>
+              <p><span class="font-medium">수집 목적:</span> 기술 요청 접수, 적합한 기술 매칭, 상담 및 안내 연락</p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-bold text-gray-900 mb-4">2. 개인정보의 보유 및 이용 기간</h3>
+          <p class="text-gray-700 mb-2"><span class="font-medium">보유 기간:</span> 수집된 개인정보는 요청일 또는 신청일로부터 최대 3년간 보유·이용됩니다.</p>
+          <p class="text-gray-700 mb-8"><span class="font-medium">삭제 요청:</span> 정보주체가 삭제를 요청하거나 이용 목적이 달성된 경우, 지체 없이 파기합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   
     <script>
       document.addEventListener("DOMContentLoaded", function () {
