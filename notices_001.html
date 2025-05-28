@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>플랜터 소개 및 온라인 플랫폼 출시 안내 - 기술중개 플랫폼 플랜터</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind 설정 확장 (custom color 등) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#242a56',      // 헤더/히어로/푸터 바탕
+            primaryMid: '#6878d6',   // 버튼 hover 등
+            textMain: '#000000',     // 본문 검정
+            textSub: '#242a56',      // 두번째섹션 텍스트 등
+            card: '#ffffff',         // 박스, 텍스트
+            bluebox: '#103481',      // 두번째섹션 박스
+            pale: {
+              50: '#eff2ff',         // 세번째, 네번째, 다섯번째 섹션 바탕
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      background: #eff2ff; /* 기본 바탕색 */
+      font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    }
+    /* 버튼 호버 효과 */
+    .btn {
+      @apply rounded-full px-6 py-2 font-semibold transition-all duration-300;
+    }
+    .btn-primary {
+      @apply bg-black text-white relative;
+      transform: translateY(0);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .btn-primary:hover {
+      background: #222;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    }
+    .btn-outline {
+      @apply border border-black text-black bg-white relative;
+      transform: translateY(0);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .btn-outline:hover {
+      background: #e5e0da;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .btn-outline:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    }
+    /* 링크 호버 효과 */
+    .hover-link {
+      @apply relative overflow-hidden;
+    }
+    .hover-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease-out;
+    }
+    .hover-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  </style>
+</head>
+<body class="text-textMain bg-pale-50">
+  <!-- 헤더 -->
+  <header class="fixed top-0 left-0 w-full text-white z-20 bg-primary">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 relative">
+      <a href="index.html">
+        <img src="Logo_planter.png" alt="플랜터 로고" class="h-8 w-auto">
+      </a>
+      <nav class="hidden md:flex gap-8 text-base font-medium">
+        <a href="index.html#home" class="relative px-1 py-1 rounded hover:bg-white/10 hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[1.5px] hover:after:bg-primaryMid hover:after:content-[''] transition-all duration-300">
+          홈
+        </a>
+        <a href="index.html#request" class="relative px-1 py-1 rounded hover:bg-white/10 hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[1.5px] hover:after:bg-primaryMid hover:after:content-[''] transition-all duration-300">
+          기술 요청
+        </a>
+        <a href="index.html#offer" class="relative px-1 py-1 rounded hover:bg-white/10 hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[1.5px] hover:after:bg-primaryMid hover:after:content-[''] transition-all duration-300">
+          기술 제안
+        </a>
+        <a href="index.html#funding" class="relative px-1 py-1 rounded hover:bg-white/10 hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[1.5px] hover:after:bg-primaryMid hover:after:content-[''] transition-all duration-300">
+          자금 조달
+        </a>
+        <a href="notices.html" class="relative px-1 py-1 rounded hover:bg-white/10 hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[1.5px] hover:after:bg-primaryMid hover:after:content-[''] transition-all duration-300">
+          공지사항
+        </a>          
+      </nav>
+      <button id="mobileMenuBtn" class="md:hidden">
+        <span class="sr-only">메뉴 열기</span>
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-primary text-white border-t">
+      <nav class="flex flex-col gap-2 px-4 py-3">
+        <a href="index.html#home" class="py-2">홈</a>
+        <a href="index.html#request" class="py-2">기술 요청</a>
+        <a href="index.html#offer" class="py-2">기술 제안</a>
+        <a href="index.html#funding" class="py-2">자금 조달</a>
+        <a href="notices.html" class="py-2">공지사항</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 공지사항 상세 내용 -->
+  <section class="pt-32 pb-16 bg-pale-50 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- 목록으로 돌아가기 버튼 -->
+      <div class="mb-8">
+        <a href="notices.html" class="btn btn-outline inline-block hover:bg-gray-200">
+          목록으로 돌아가기
+        </a>
+      </div>
+
+      <!-- 공지 내용 -->
+      <article class="bg-white rounded-soft-xl shadow-soft p-8 mb-8">
+        <header class="mb-8 pb-8 border-b border-gray-200">
+          <h1 class="text-3xl font-bold text-gray-900 mb-4">특허 매칭 서비스 온라인 확장 안내</h1>
+          <div class="flex items-center text-gray-500">
+            <span>2025.05.14</span>
+          </div>
+        </header>
+        
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 mb-6">
+            안녕하세요, 기술과 기업을 잇는 파트너, ㈜플랜터입니다.
+          </p>
+          <p class="text-gray-700 mb-6">
+            ㈜플랜터는 2023년 2월,<br>
+            기존 기업 '아바드'의 기술거래 및 기술사업화 부문을 전문적으로 분리하여 설립된 회사입니다.<br>
+            기술이 필요한 기업과,<br>
+            자신의 기술을 이전하고자 하는 공급자 사이에서<br>
+            더 나은 연결과 실질적인 결과를 만들어내기 위해 출발했습니다.
+          </p>
+          &nbsp;
+          <h2 class="text-xl font-bold text-gray-900 mb-4">지금까지의 활동</h2>
+          <p class="text-gray-700 mb-6">
+            기존 네트워크와 축적된 현장 경험을 바탕으로<br>
+            설립 이후, 짧은 업력에도 불구하고<br>
+            현재까지 총 35건의 기술이전 실적을 달성했습니다.<br>            
+          </p>
+          <p class="text-gray-700 mb-6">
+            이 성과는 대부분 <strong>기존 파트너 기업 및 업계 네트워크 중심의 오프라인 활동</strong>을 통해 이루어진 것으로,<br>
+            국내 기술거래 시장의 특성을 감안할 때 결코 적지 않은, 의미 있는 수치라 할 수 있습니다.
+          </p>
+          <p class="text-gray-700 mb-6">
+            기술거래는 결코 쉬운 일이 아니지만,<br>
+            저희는 한 건 한 건 정성을 다해,<br>
+            기업의 성장을 돕고, 기술의 가치를 현실화하는 데 집중해 왔습니다.
+          </p>
+          <p class="text-gray-700 mb-6">
+            이러한 성과는<br>
+            <strong>2024 대한민국 기술사업화대전(9.24)</strong>에서<br>
+            기술이전 분야의 공로를 인정받아<br>
+            산업통상자원부장관 표창으로 이어졌습니다.
+          </p>
+          &nbsp;
+          
+          <h2 class="text-xl font-bold text-gray-900 mb-4">온라인 플랫폼으로의 확장 _ 더 넓게, 더 빠르게</h2>
+          <p class="text-gray-700 mb-6">
+            그간 오프라인 중심, 인맥을 기반으로 운영해온 매칭 구조를<br>
+            이제는 온라인으로 확장합니다.
+          </p>
+          <p class="text-gray-700 mb-6">
+            이번 홈페이지 개편을 통해<br>
+            누구나 편리하게 기술을 요청하고, 제안할 수 있는 창구를 마련했습니다.<br>
+            이제는 더 많은 기업이 더 쉽게 기술을 만날 수 있는 구조를 만들고자 합니다.
+          </p>
+          &nbsp;
+
+          <h2 class="text-xl font-bold text-gray-900 mb-4">더 넓어진 협력과 매칭 가능성</h2>
+          <ul class="list-disc pl-6 mb-6 text-gray-700">
+            <li><strong>한국기술거래사회</strong>, <strong>한국발명진흥회</strong> 등 공신력 있는 기관과의 협력 확대</li>
+            <li><strong>공공·민간 기술 공급자 풀 강화</strong></li>
+            <li><strong>수요 중심의 매칭 체계 고도화</strong> 등</li>
+          </ul>
+          <p class="text-gray-700 mb-6">
+            플랜터는 점점 더 많은 기술과 기업을 연결할 수 있는<br>
+            탄탄한 기반을 갖춘 플랫폼으로 성장하고 있습니다.
+          </p>
+          &nbsp;
+          <h2 class="text-xl font-bold text-gray-900 mb-4">우리의 철학</h2>
+          <p class="text-gray-700 mb-6">
+            플랜터는 규모나 연혁보다,<br>
+            "얼마나 유의미한 도움을 드렸는가"를 더 소중하게 여깁니다.
+          </p>
+          <p class="text-gray-700 mb-6">
+            기술이 필요한 기업,<br>
+            기술의 가치를 실현하고자 하는 공급자 –<br>
+            플랜터는 그 연결을 돕는 작지만 단단한 연결자로서<br>
+            앞으로도 진심을 다해 걸어가겠습니다.
+          </p>
+          <p class="text-gray-700 mb-6">
+            감사합니다.<br>
+            ㈜플랜터 드림
+          </p>
+        </div>
+      </article>
+
+      <!-- 이전글/다음글 네비게이션 -->
+      <div class="mt-8 flex flex-row gap-4">
+        <!-- 이전 글 (없음) -->
+        <div class="flex-1 flex items-center gap-2 border rounded-lg shadow p-4 bg-gray-100 cursor-not-allowed opacity-60 min-w-0">
+          <span class="text-lg text-gray-300">&#8592;</span>
+          <div class="flex flex-col min-w-0">
+            <span class="text-xs text-gray-400">이전 글</span>
+            <span class="truncate text-gray-400">이전 글이 없습니다</span>
+          </div>
+        </div>
+        <!-- 다음 글 -->
+        <a href="notices_002.html" class="flex-1 flex items-center gap-2 border rounded-lg shadow p-4 hover:bg-gray-50 transition-colors min-w-0 justify-end">
+          <div class="flex flex-col min-w-0 text-right">
+            <span class="text-xs text-gray-500">다음 글</span>
+            <span class="truncate text-primary font-medium">2025년 기술 중개 수수료 지원 안내</span>
+          </div>
+          <span class="text-lg text-gray-400 ml-2">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="bg-primary text-white py-8 text-xs">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col items-center text-center">
+      <a href="index.html">
+        <img src="Logo_planter.png" alt="플랜터 로고" class="h-8 w-auto mb-2">
+      </a>
+      <div class="flex flex-row flex-wrap justify-center gap-x-2 gap-y-1 mb-2 text-white">
+        <span>주식회사 플랜터</span>
+        <span class="hidden sm:inline-block w-px h-3 bg-white align-middle"></span>
+        <span>사업자등록번호 : 274-87-02935</span>
+        <span class="hidden sm:inline-block w-px h-3 bg-white align-middle"></span>
+        <span>대표 : 김형철</span>
+        <span class="hidden sm:inline-block w-px h-3 bg-white align-middle"></span>
+        <span>주소 : 경기도 안양시 동안구 시민대로 327번길 11-41, 3297호</span>
+        <span class="hidden sm:inline-block w-px h-3 bg-white align-middle"></span>
+        <span class="email-placeholder">[이메일 로딩 중]</span>
+      </div>
+      <div class="flex flex-row justify-center gap-4 mt-2 mb-2">
+        <button onclick="openModal('termsModal')" class="hover:text-primaryMid transition-colors text-white underline">이용약관</button>
+        <button onclick="openModal('privacyModal')" class="hover:text-primaryMid transition-colors text-white underline">개인정보처리방침</button>
+      </div>
+      <div class="text-white mt-1">© 2025 주식회사 플랜터. All rights reserved.</div>
+    </div>
+
+    <!-- 이용약관 모달 -->
+    <div id="termsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" onclick="if(event.target===this)closeModal('termsModal')">
+      <div class="bg-white rounded-lg shadow-lg max-w-lg w-full max-h-[80vh] overflow-y-auto relative p-0" onclick="event.stopPropagation()">
+        <!-- Sticky Header -->
+        <div class="sticky top-0 z-10 bg-white rounded-t-lg flex items-center justify-between px-6 py-4 border-b">
+          <h2 class="text-lg font-bold">이용약관</h2>
+          <button onclick="closeModal('termsModal')" class="text-xl text-gray-400 hover:text-primary ml-4">&times;</button>
+        </div>
+        <div class="text-xs text-textMain whitespace-pre-line text-left px-6 py-4">
+          본 약관은 ㈜플랜터(이하 "회사")가 운영하는 웹사이트(이하 "사이트")에서 제공하는 정보 서비스 및 신청 접수 서비스(기술 요청, 기술 제안, 자금 조달 관련 문의 등)의 이용과 관련하여 회사와 이용자 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.
+
+제1조 (목적)
+이 약관은 회사가 운영하는 사이트를 통해 제공하는 각종 정보 서비스 및 신청 접수 서비스의 이용 조건 및 절차, 회사와 이용자의 권리·의무 및 책임사항을 규정합니다.
+
+제2조 (정의)
+이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
+· "사이트"란 회사가 운영하는 기술거래 관련 정보 제공 웹페이지를 말합니다.
+· "이용자"란 본 사이트에 접속하여 본 약관에 따라 회사가 제공하는 서비스를 이용하는 자를 말합니다.
+· "서비스"란 기술 요청, 기술 제안, 자금 조달 등과 관련된 온라인 신청 접수, 정보 제공 및 연계 활동을 말합니다.
+
+제3조 (약관의 효력 및 변경)
+본 약관은 사이트에 게시함으로써 효력을 발생합니다.
+회사는 관련 법령을 위반하지 않는 범위 내에서 약관을 개정할 수 있으며, 개정 시 최소 7일 전 사이트 공지사항 또는 이메일을 통해 고지합니다. 
+이용자는 개정된 약관에 동의하지 않을 경우 서비스 이용을 중단할 수 있습니다. 변경 고지 후 7일 이내 이의를 제기하지 않은 경우 동의한 것으로 간주됩니다.
+
+제4조 (서비스의 내용)
+회사는 다음과 같은 서비스를 제공합니다.
+· 기술 요청 및 제안 접수, 자금 조달 상담 신청서의 온라인 수집
+· 신청서를 기반으로 한 기술 수요자와 공급자 간의 매칭 또는 연계 시도
+· 기타 기술 거래 및 자금 연계 관련 안내 및 정보 제공
+※ 회사는 서비스 내용, 범위, 조건을 변경하거나 중단할 수 있으며, 이 경우 최소 7일 전 사이트 공지사항 또는 이메일을 통해 고지합니다. 다만, 시스템 장애, 법령 변경, 기타 사유 등 긴급하거나 불가피한 사정이 있는 경우에는 사후에 고지할 수 있습니다.
+※ 회사는 단순한 정보 매개 및 신청 접수 창구 역할을 수행하며, 매칭 성공, 제3자와의 직접 거래 또는 계약 체결에 대해 보증하거나 법적 책임을 지지 않습니다.
+
+제5조 (개인정보 보호)
+회사는 "개인정보보호법" 등 관련 법령에 따라 이용자의 개인정보를 보호하며, 개인정보 처리에 관한 사항은 별도로 게시한 [개인정보처리방침]에 따릅니다.
+이용자는 네이버 MYBOX 폼 내 체크박스를 통해 개인정보 수집·이용에 동의하며, 회사는 해당 정보를 신청 목적 범위 내에서만 사용합니다.
+
+제6조 (지적재산권)
+사이트에 게시된 모든 콘텐츠(문서, 이미지, 로고, 그래픽 등)에 대한 저작권 및 지적재산권은 회사 또는 정당한 권리자에게 귀속됩니다.
+이용자가 서비스를 통해 제출한 신청 내용(예: 기술 제안, 특허 정보)의 지적재산권은 이용자 또는 정당한 권리자에게 귀속됩니다. 회사는 이를 신청 목적(매칭, 연계) 범위 내에서만 사용합니다.
+이용자는 회사의 사전 서면 동의 없이 콘텐츠를 복제, 배포, 전송, 수정, 출판, 상업적으로 이용할 수 없습니다.
+
+제7조 (면책조항)
+회사는 제공된 정보의 정확성, 신뢰성, 적시성에 대해 보증하지 않으며, 이용자가 이를 바탕으로 행한 행동의 결과에 대해 책임을 지지 않습니다.
+회사는 기술 거래, 자금 연계, 제3자와의 계약 체결 등과 관련하여 이용자 간 또는 이용자와 제3자 간 발생한 분쟁에 대해 어떠한 책임도 부담하지 않습니다.
+회사는 사이트의 유지보수, 시스템 오류, 외부 해킹, 불가항력적 사유 등으로 인한 서비스 중단이나 손해에 대해 책임을 지지 않습니다.
+
+제8조 (준거법 및 관할)
+본 약관의 해석 및 적용에 관하여는 대한민국 법령이 적용됩니다.
+서비스 이용과 관련하여 회사와 이용자 간에 발생한 분쟁에 대하여는 서울중앙지방법원을 제1심 관할 법원으로 합니다.
+
+제9조 (서비스 이용 제한)
+이용자는 다음 행위를 해서는 안 됩니다.
+· 타인의 개인정보를 도용하거나 허위 정보를 제공하는 행위
+· 불법적이거나 부적절한 내용(예: 음란물, 명예훼손)을 제출하는 행위
+· 사이트의 정상적인 운영을 방해하는 행위(예: 과도한 요청, 해킹 시도)
+회사는 위 행위를 확인할 경우, 이용자의 서비스 접근을 제한할 수 있으며, 필요한 경우 법적 조치를 취할 수 있습니다.
+
+제10조 (분쟁 해결)
+회사와 이용자는 서비스 이용과 관련한 분쟁을 원만히 해결하기 위해 상호 협의합니다.
+협의로 해결되지 않을 경우, 제8조에 따른 관할 법원에서 해결합니다.
+
+· 공고일자 : 2025년 5월 14일
+· 시행일자 : 2025년 5월 21일
+        </div>
+      </div>
+    </div>
+
+    <!-- 개인정보처리방침 모달 -->
+    <div id="privacyModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden" onclick="if(event.target===this)closeModal('privacyModal')">
+      <div class="bg-white rounded-lg shadow-lg max-w-lg w-full max-h-[80vh] overflow-y-auto relative p-0" onclick="event.stopPropagation()">
+        <!-- Sticky Header -->
+        <div class="sticky top-0 z-10 bg-white rounded-t-lg flex items-center justify-between px-6 py-4 border-b">
+          <h2 class="text-lg font-bold">개인정보처리방침</h2>
+          <button onclick="closeModal('privacyModal')" class="text-xl text-gray-400 hover:text-primary ml-4">&times;</button>
+        </div>
+        <div class="text-xs text-textMain whitespace-pre-line text-left px-6 py-4">
+          ㈜플랜터(이하 "회사")는 이용자의 개인정보를 소중히 보호하며, "개인정보보호법", "정보통신망 이용촉진 및 정보보호 등에 관한 법률" 등 관련 법령을 준수합니다. 회사는 네이버 MYBOX 폼을 통해 개인정보를 수집·이용하며, 이를 투명하게 공개합니다.
+
+1. 개인정보의 수집 항목 및 목적
+회사는 네이버 MYBOX 폼을 통해 아래와 같은 목적에 필요한 개인정보를 수집합니다. 수집 전 정보주체의 동의를 받습니다.
+① 기술 요청 신청
+수집 항목: 회사명, 담당자 성명, 연락처(전화번호 또는 이메일), 요청 내용
+수집 목적: 기술 요청 접수, 적합한 기술 매칭, 상담 및 안내 연락
+② 기술 제안 신청
+수집 항목: 출원인(또는 권리자) 정보, 특허번호, 성명, 연락처(전화번호 또는 이메일), 신청 내용
+수집 목적: 기술 제안 접수, 보유 기술 확인, 매입 희망 기업과의 매칭 및 안내 연락
+③ 자금 조달 문의
+수집 항목: 회사명, 담당자 성명, 연락처(전화번호 또는 이메일), 신청 내용
+수집 목적: 자금 조달 관련 상담 및 연계 안내
+
+2. 개인정보의 보유 및 이용 기간
+보유 기간: 수집된 개인정보는 요청일 또는 신청일로부터 최대 3년간 보유·이용됩니다. 
+삭제 요청: 정보주체가 삭제를 요청하거나 이용 목적이 달성된 경우, 지체 없이 파기합니다.
+
+3. 개인정보의 제3자 제공
+회사는 원칙적으로 개인정보를 제3자에게 제공하지 않습니다. 다만, 아래 경우는 예외로 합니다:
+정보주체의 동의가 있는 경우
+법령에 따라 제공이 요구되는 경우(예: 수사기관 요청)
+기술 매칭 또는 자금 조달을 위해 파트너 기업(예: 투자사, 기술 매입 기업)과 공유가 필요한 경우, 개별 동의를 받은 뒤 진행합니다.
+
+4. 개인정보가 저장되는 시스템
+회사는 네이버 MYBOX(운영: 네이버 주식회사)를 통해 개인정보를 수집 및 저장하고 있으며, 해당 시스템의 보안 환경에 따라 보호 조치를 시행하고 있습니다. 
+네이버 MYBOX는 자체 보안체계를 통해 데이터 암호화, 접근 제한 등의 기술적 조치를 수행합니다.
+
+5. 개인정보의 파기
+개인정보의 보유 기간이 끝나거나 이용 목적이 달성된 경우, 해당 정보를 지체 없이 파기합니다:
+전자적 파일: 복구 불가능한 방식으로 삭제
+물리적 기록: 파쇄 또는 소각
+
+6. 개인정보의 보안 조치
+네이버 MYBOX는 자체 보안 시스템을 운영하고 있으며, 회사는 해당 시스템을 통해 개인정보를 안전하게 저장하고 있습니다.
+
+7. 정보주체의 권리
+정보주체는 아래 권리를 행사할 수 있습니다:
+권리: 개인정보 정정, 삭제, 처리 정지 요청
+행사 방법: 문의처로 이메일 요청
+처리 기한: 접수 후 10일 이내 처리(법령에 따라 예외 가능)
+
+8. 개인정보 보호 책임자 및 문의처
+개인정보 관련 문의는 아래로 연락주시기 바랍니다:
+책임자: 김형철 (개인정보 보호 책임자)
+이메일: chulec [at] naver [dot] com
+
+9. 개인정보처리방침의 변경
+방침이 변경될 경우, 최소 7일 전 웹사이트 공지사항 또는 이메일로 안내합니다. 중요한 변경(예: 수집 항목 추가, 제3자 제공)은 동의를 다시 받습니다.
+
+10. 쿠키 및 유사 기술
+현재 회사는 쿠키를 사용하지 않습니다. 추후 쿠키 또는 유사 기술 사용 시 별도의 안내를 하겠습니다.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 모바일 메뉴 토글 JS -->
+  <script>
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+
+    // 메뉴 버튼 클릭 시 토글
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 외부 클릭 감지 방지
+      menu.classList.toggle('hidden');
+    });
+
+    // 메뉴 내부 링크 클릭 시 닫기
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+
+    // 바깥 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+      const isClickInside = menu.contains(e.target) || btn.contains(e.target);
+      if (!isClickInside && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+    // ESC로 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        closeModal('termsModal');
+        closeModal('privacyModal');
+      }
+    });
+
+    // 헤더 스크롤 효과
+    const header = document.getElementById('mainHeader');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll <= 0) {
+        header.classList.remove('bg-primary');
+        header.classList.add('bg-transparent');
+      } else {
+        header.classList.remove('bg-transparent');
+        header.classList.add('bg-primary');
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
+
+  <!-- 이메일 스크립트 추가 -->
+  <script>
+    const user = 'chulec';
+    const domain = 'naver.com';
+    const email = `${user}@${domain}`;
+    document.querySelectorAll('.email-placeholder').forEach(el => {
+      el.textContent = email;
+    });
+  </script>  
+
+</body>
+</html> 

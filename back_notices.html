@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>공지사항 | 플랜터</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#242a56',
+            primaryMid: '#6878d6',
+            textMain: '#000000',
+            textSub: '#242a56',
+            card: '#ffffff',
+            bluebox: '#103481',
+            pale: {
+              50: '#eff2ff'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-pale-50 text-textMain min-h-screen flex flex-col">
+  <!-- 헤더 -->
+  <header class="fixed top-0 left-0 w-full text-white z-20 transition-all duration-300 bg-primary" id="mainHeader">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 relative">
+      <a href="index.html">
+        <img src="Logo_planter.png" alt="플랜터 로고" class="h-8 w-auto">
+      </a>
+      <nav class="hidden md:flex gap-8 text-base font-medium">
+        <a href="index.html#home">홈</a>
+        <a href="index.html#request">기술 요청</a>
+        <a href="index.html#offer">기술 제안</a>
+        <a href="index.html#funding">자금 조달</a>
+        <a href="index.html#notice">공지사항</a>
+      </nav>
+      <button id="mobileMenuBtn" class="md:hidden">
+        <span class="sr-only">메뉴 열기</span>
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-primary text-white border-t">
+      <nav class="flex flex-col gap-2 px-4 py-3">
+        <a href="index.html#home" class="py-2">홈</a>
+        <a href="index.html#request" class="py-2">기술 요청</a>
+        <a href="index.html#offer" class="py-2">기술 제안</a>
+        <a href="index.html#funding" class="py-2">자금 조달</a>
+        <a href="index.html#notice" class="py-2">공지사항</a>
+      </nav>
+    </div>
+  </header>
+
+    <!-- 공지사항 테이블 -->
+    <main class="min-h-[calc(100vh-200px)] pt-28 pb-20 px-4 max-w-7xl mx-auto">
+        <h1 class="text-4xl font-extrabold text-primary mb-2">NOTICE</h1>
+            <p class="text-center text-base text-textSub mb-8">Accelerating innovation through smart tech brokerage.</p>        
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white border border-gray-200 text-sm">
+            <thead class="bg-gray-100 text-left">
+                <tr>
+                  <th class="px-4 py-3 border-b w-16">No.</th>
+                  <th class="px-4 py-3 border-b">Title</th>
+                  <th class="px-4 py-3 border-b">Description</th>
+                  <th class="px-4 py-3 border-b w-24">Date</th>
+                </tr>
+              </thead>              
+            <tbody>
+                <tr class="border-b">
+                    <td class="px-4 py-3">8</td>
+                    <td class="px-4 py-3 font-semibold text-primary">This is a test post.</td>
+                    <td class="px-4 py-3 text-textSub">This is a test post description goes here briefly.</td>
+                    <td class="px-4 py-3">05-04</td>
+                </tr>                  
+              <tr class="border-b">
+                <td class="px-4 py-3">7</td>
+                <td class="px-4 py-3">This is a test post</td>
+                <td class="px-4 py-3">최고관리자</td>
+                <td class="px-4 py-3">05-04</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-3">6</td>
+                <td class="px-4 py-3">This is a test post. This is a test post. This is a test post.</td>
+                <td class="px-4 py-3">최고관리자</td>
+                <td class="px-4 py-3">05-04</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-3">5</td>
+                <td class="px-4 py-3">This is a test post</td>
+                <td class="px-4 py-3">최고관리자</td>
+                <td class="px-4 py-3">05-04</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-3">4</td>
+                <td class="px-4 py-3">This is a test post. This is a test post. This is a test post.</td>
+                <td class="px-4 py-3">최고관리자</td>
+                <td class="px-4 py-3">05-04</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-3">3</td>
+                <td class="px-4 py-3">This is a test post</td>
+                <td class="px-4 py-3">최고관리자</td>
+                <td class="px-4 py-3">05-04</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-3">2</td>
+                <td class="px-4 py-3">This is a test post. This is a test post. This is a test post.</td>
+                <td class="px-4 py-3">최고관리자</td>
+                <td class="px-4 py-3">05-04</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3">1</td>
+                <td class="px-4 py-3">This is a test post</td>
+                <td class="px-4 py-3">최고관리자</td>
+                <td class="px-4 py-3">05-04</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+  <!-- 푸터 -->
+  <footer class="bg-primary text-white py-8 text-xs">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col items-center text-center">
+      <a href="index.html">
+        <img src="Logo_planter.png" alt="플랜터 로고" class="h-8 w-auto mb-2">
+      </a>
+      <div class="flex flex-row flex-wrap justify-center gap-x-2 gap-y-1 mb-2">
+        <span>주식회사 플랜터</span><span class="hidden sm:inline-block w-px h-3 bg-white"></span>
+        <span>사업자등록번호 : 274-87-02935</span><span class="hidden sm:inline-block w-px h-3 bg-white"></span>
+        <span>대표 : 김형철</span><span class="hidden sm:inline-block w-px h-3 bg-white"></span>
+        <span>주소 : 경기도 안양시 동안구 시민대로 327번길 11-41, 3297호</span><span class="hidden sm:inline-block w-px h-3 bg-white"></span>
+        <span>이메일: chulec [at] naver [dot] com</span>
+      </div>
+      <div class="mt-2">© 2025 주식회사 플랜터. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    async function loadFullNotices() {
+      try {
+        const res = await fetch('notices.json');
+        if (!res.ok) throw new Error('공지사항 데이터를 불러올 수 없습니다.');
+        const data = await res.json();
+        const list = document.getElementById('notice-full-list');
+        const indicator = document.getElementById('notice-indicator');
+        const notices = data.notices || [];
+
+        if (notices.length === 0) {
+          list.innerHTML = '<div class="text-center text-textSub">등록된 공지사항이 없습니다.</div>';
+          return;
+        }
+
+        list.innerHTML = notices.map(notice => `
+          <div class="bg-white rounded-xl shadow-md p-6 flex flex-col justify-between h-full">
+            <div>
+              <p class="text-xs font-bold text-primaryMid mb-2">NOTICE</p>
+              <h3 class="text-base font-semibold text-primary mb-2">${notice.title}</h3>
+              <p class="text-sm text-textSub mb-4">${notice.content.slice(0, 60)}...</p>
+            </div>
+            <div class="flex justify-between items-center text-xs text-textSub">
+              <span>${notice.date}</span>
+              <span class="w-6 h-6 rounded-full bg-gray-200"></span>
+            </div>
+          </div>
+        `).join('');
+
+        const pages = Math.ceil(notices.length / 4);
+        indicator.innerHTML = Array.from({ length: pages }, (_, i) =>
+          `<span class="w-2 h-2 rounded-full ${i === 0 ? 'bg-primary' : 'bg-gray-300'}"></span>`
+        ).join(' ');
+      } catch (e) {
+        document.getElementById('notice-full-list').innerHTML = '<div class="text-center text-red-500">공지사항을 불러오는 중 오류가 발생했습니다.</div>';
+      }
+    }
+    loadFullNotices();
+
+    // 모바일 메뉴 토글
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
