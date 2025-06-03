@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>플랜터 공지사항</title>
+    <link>https://planter.co.kr</link>
+    <description>기술중개 플랫폼 플랜터의 공지사항</description>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 23 May 2025 12:00:00 +0900</lastBuildDate>
+    <atom:link href="https://planter.co.kr/feed.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>기술 은행 구축·운영사업 전문가 POOL 선정</title>
+      <link>https://planter.co.kr/notices_003.html</link>
+      <pubDate>Fri, 23 May 2025 12:00:00 +0900</pubDate>
+    </item>
+    
+    <item>
+      <title>2025년 기술중개 수수료 지원 안내</title>
+      <link>https://planter.co.kr/notices_002.html</link>
+      <pubDate>Wed, 14 May 2025 12:00:00 +0900</pubDate>
+    </item>
+    
+    <item>
+      <title>특허 매칭 서비스 운영 현황 및 온라인 확장 안내</title>
+      <link>https://planter.co.kr/notices_001.html</link>
+      <pubDate>Tue, 21 May 2025 12:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss> 
